@@ -2,40 +2,47 @@
 
 using namespace std;
 
-void printarr(int arrr[],int nn)
+struct node
 {
-    cout<< "\n Array is: \n";
-    for(int i=0; i<nn; i++)
-    {
-        cout << arrr[i] << ", ";
-    }
-}
+    int info;
+    struct node *link;
+};
+
 int main()
 {
-    cout << "Linear search" << endl;
+    cout << "Hello world!" << endl;
 
-    int LA[] = {5,7,8,2,8,9,11,2,45};
-    int n = sizeof(LA)/sizeof(LA[0]);
-    int loc =-1;
-    int item = 2;
-    int k =0;
-    printarr(LA,n);
-cout << "\nlook for item: " << item;
-    while(loc==-1 && k<=n-1)
+    int item, leng;
+    node *ptr, *START;
+
+    cout << "Enter Total nodes :";
+    cin >> leng;
+
+    ptr = new node;
+    START = ptr;
+
+    for(int i=1; i<=leng; i++)
     {
-        if (LA[k] == item)
+        cout << "Enter node no : " << i << " of list: ";
+        cin >> item;
+        ptr ->info=item;
+
+        if(i==leng)
         {
-            loc=k;
+            ptr->link=NULL;
         }
-        k=k+1;
+        else
+        {
+            ptr->link = new node;
+            ptr = ptr->link;
+        }
     }
-    if(loc==-1)
+
+    ptr=START;
+    while(ptr!=NULL)
     {
-        cout<< "\nItem not found";
-    }
-    else
-    {
-cout<< "\nItem found at index " << loc << "at "<< loc+1;
+        cout << ptr ->info << ", ";
+        ptr = ptr ->link;
     }
 
     return 0;
